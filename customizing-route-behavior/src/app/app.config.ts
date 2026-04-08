@@ -1,15 +1,17 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter, withComponentInputBinding, withPreloading } from '@angular/router';
+import { provideRouter, RouteReuseStrategy, withComponentInputBinding, withPreloading } from '@angular/router';
 import { routes } from './app.routes';
 import { SelectivePreloadStrategy } from './core/routing/selective-preload.strategy';
+import { CustomRouteReuseStrategy } from './core/routing/route-reuse.strategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(
-      routes, 
+      routes,
       withPreloading(SelectivePreloadStrategy),
       withComponentInputBinding()
-    )
+    ),
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }
   ]
 };
