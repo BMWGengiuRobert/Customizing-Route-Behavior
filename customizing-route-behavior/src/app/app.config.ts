@@ -11,9 +11,12 @@ export const appConfig: ApplicationConfig = {
       routes,
       withPreloading(SelectivePreloadStrategy),
       withComponentInputBinding(),
-      
+
       // broke history stack, use 'replace', maintain history stack, use 'computed'
-      withRouterConfig({ canceledNavigationResolution: 'computed' })
+      withRouterConfig({ canceledNavigationResolution: 'computed', 
+        // url changes when time expires, use 'deferred', url updates immediately when navigation starts, use 'eager'
+        urlUpdateStrategy: 'deferred' }
+      )
     ),
     { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }
   ]

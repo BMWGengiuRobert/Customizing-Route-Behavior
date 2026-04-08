@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './features/preloading-strategy/home/home';
 import { isbnMatcher } from './core/routing/isbn.matcher';
 import { unsavedChangesGuard } from './core/guards/unsaved-changes.guard';
+import { slowAuthGuard } from './core/guards/slow-auth.guard';
 
 export const routes: Routes = [
     { path: 'home', component: Home }, // eager load
@@ -34,6 +35,12 @@ export const routes: Routes = [
         path: 'edit-profile',
         loadComponent: () => import('./features/canceled-navigations/profile/profile').then(c => c.Profile),
         canDeactivate: [unsavedChangesGuard],
+        data: { preload: true }      // background load
+    },
+    {
+        path: 'secure-area',
+        loadComponent: () => import('./features/url-updates/secure-area/secure-area').then(c => c.SecureArea),
+        canActivate: [slowAuthGuard],
         data: { preload: true }      // background load
     },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
