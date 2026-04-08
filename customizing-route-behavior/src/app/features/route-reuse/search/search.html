@@ -12,8 +12,12 @@
 
         @if (searchTerm) {
         <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 4px;">
-            Found 1 result for: <strong>{{ searchTerm }}</strong>
-            <br><br>
+            <a href="https://angular.dev/guide/routing/customizing-route-behavior#route-reuse-strategy" target="_blank">
+                Read more about route reuse here.
+            </a>
+            <div>
+                Found 1 result for: <strong>{{ searchTerm }}</strong>
+            </div>
             <button mat-raised-button color="accent" routerLink="/isbn-978111111111">
                 View Product (ISBN: 978111111111)
             </button>

@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> <mat-icon>edit</mat-icon> Edit Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>If you check the box below, the app will block you from leaving this page!</p>
+        <p>
+            <a href="https://angular.dev/guide/routing/customizing-route-behavior#handle-canceled-navigations"
+                target="_blank">
+                Read more about cancelling navigations here.
+            </a>
+        </p>
+        <mat-checkbox [(ngModel)]="isDirty">
+            Simulate Unsaved Changes
+        </mat-checkbox>
+    </mat-card-content>
+</mat-card>
