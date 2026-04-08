@@ -1,0 +1,17 @@
+.container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.toast {
+    background: #ff4081;
+    color: #ffffff;
+    padding: 12px 24px;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    z-index: 1000;
+}

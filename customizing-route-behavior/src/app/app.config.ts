@@ -1,11 +1,15 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
+import { provideRouter, withComponentInputBinding, withPreloading } from '@angular/router';
 import { routes } from './app.routes';
+import { SelectivePreloadStrategy } from './core/routing/selective-preload.strategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(
+      routes, 
+      withPreloading(SelectivePreloadStrategy),
+      withComponentInputBinding()
+    )
   ]
 };
